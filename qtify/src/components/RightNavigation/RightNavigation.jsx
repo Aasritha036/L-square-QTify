@@ -3,7 +3,7 @@ import rightArrow from "../../assets/right.svg";
 
 const RightNavigation = () => {
   return (
-    <button className="custom-next navBtn">
+    <button className="custom-next navBtn next">
       <img src={rightArrow} alt="right" />
     </button>
   );

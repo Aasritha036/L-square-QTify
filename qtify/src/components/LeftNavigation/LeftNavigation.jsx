@@ -3,7 +3,7 @@ import leftArrow from "../../assets/left.svg";
 
 const LeftNavigation = () => {
   return (
-    <button className="custom-prev navBtn">
+    <button className="custom-prev navBtn prev">
       <img src={leftArrow} alt="left" />
     </button>
   );

@@ -10,7 +10,7 @@ const Section = ({ title, endpoint }) => {
   const [albums, setAlbums] = useState([]);
 
   // Grid default
-  const [showAll, setShowAll] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
