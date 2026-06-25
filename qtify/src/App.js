@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import Section from "./Section/Section";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./App.css";
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Hero />
+        <Section />
       </BrowserRouter>
     </ThemeProvider>
   );

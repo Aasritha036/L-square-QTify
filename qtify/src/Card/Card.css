@@ -1,0 +1,30 @@
+.albumCard{
+    width:160px;
+    background:#121212 !important;
+    border-radius:10px !important;
+    overflow:hidden;
+    box-shadow:none !important;
+}
+
+.albumImage{
+    height:205px;
+    object-fit:cover;
+}
+
+.albumContent{
+    background:white;
+    padding:8px 12px !important;
+}
+
+.chip{
+    background:black !important;
+    color:white !important;
+    font-size:12px !important;
+    height:28px !important;
+}
+
+.albumTitle{
+    color:white;
+    padding-top:10px;
+    font-size:16px !important;
+}

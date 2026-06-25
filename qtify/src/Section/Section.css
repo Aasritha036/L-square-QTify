@@ -1,0 +1,36 @@
+.section{
+
+    padding:32px;
+}
+
+.sectionHeader{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.sectionHeader h2{
+
+    color:white;
+    font-size:24px;
+}
+
+.toggleBtn{
+
+    background:none;
+    border:none;
+    color:#34C94B;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.cardGrid{
+
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
