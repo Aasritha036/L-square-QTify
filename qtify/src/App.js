@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import Section from "./components/Section/Section";
 import AlbumSection from "./components/AlbumSection/AlbumSection";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -34,6 +35,12 @@ function App() {
         <AlbumSection
           title="New Albums"
           endpoint="/albums/new"
+        />
+
+        <Section
+          title="Songs"
+          endpoint="/songs"
+          isSongsSection={true}
         />
       </BrowserRouter>
     </ThemeProvider>

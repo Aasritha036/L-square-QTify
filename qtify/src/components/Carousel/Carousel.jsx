@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -8,23 +9,26 @@ import LeftNavigation from "../LeftNavigation/LeftNavigation";
 import RightNavigation from "../RightNavigation/RightNavigation";
 
 const Carousel = ({ data, renderComponent }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
     <div style={{ position: "relative" }}>
-      <LeftNavigation />
+      <button ref={prevRef} className="navBtn prev">
+        <LeftNavigation />
+      </button>
+
+      <button ref={nextRef} className="navBtn next">
+        <RightNavigation />
+      </button>
 
       <Swiper
         modules={[Navigation]}
-        navigation={{
-          prevEl: ".custom-prev",
-          nextEl: ".custom-next",
-        }}
         spaceBetween={20}
-        breakpoints={{
-          320: { slidesPerView: 2 },
-          640: { slidesPerView: 3 },
-          768: { slidesPerView: 4 },
-          1024: { slidesPerView: 6 },
-          1280: { slidesPerView: 7 },
+        slidesPerView={7}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
         }}
       >
         {data.map((item) => (
@@ -33,8 +37,6 @@ const Carousel = ({ data, renderComponent }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <RightNavigation />
     </div>
   );
 };

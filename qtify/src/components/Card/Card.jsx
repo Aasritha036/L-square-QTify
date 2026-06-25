@@ -8,7 +8,12 @@ import {
 
 import "./Card.css";
 
-const AlbumCard = ({ image, follows, title }) => {
+const AlbumCard = ({
+  image,
+  follows,
+  title,
+  isSongsSection = false,
+}) => {
   return (
     <div className="cardWrapper">
       <Card className="albumCard">
@@ -21,7 +26,9 @@ const AlbumCard = ({ image, follows, title }) => {
 
         <CardContent className="albumContent">
           <Chip
-            label={`${follows} Follows`}
+            label={`${follows} ${
+              isSongsSection ? "Likes" : "Follows"
+            }`}
             className="chip"
           />
         </CardContent>

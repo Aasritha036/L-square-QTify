@@ -1,22 +1,34 @@
 import { useEffect, useState } from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+
+import Carousel from "../Carousel/Carousel";
+import Card from "../Card/Card";
 import API from "../../services/api";
 
-import AlbumCard from "../Card/Card";
-import Carousel from "../Carousel/Carousel";
-
-import "./Section.css";
+import styles from "./Section.module.css";
 
 const Section = ({ title, endpoint }) => {
-  const [albums, setAlbums] = useState([]);
-
-  // Grid default
-  const [showAll, setShowAll] = useState(false);
+  const [songs, setSongs] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] =
+    useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await API.get(endpoint);
-        setAlbums(res.data);
+        const songsRes = await API.get(endpoint);
+        setSongs(songsRes.data);
+
+        const genreRes = await API.get("/genres");
+
+        setGenres([
+          {
+            key: "all",
+            label: "All",
+          },
+          ...genreRes.data.data,
+        ]);
       } catch (err) {
         console.log(err);
       }
@@ -25,42 +37,48 @@ const Section = ({ title, endpoint }) => {
     fetchData();
   }, [endpoint]);
 
-  return (
-    <section className="section">
-      <div className="sectionHeader">
-        <h2>{title}</h2>
+  const filteredSongs =
+    selectedGenre === "all"
+      ? songs
+      : songs.filter(
+          (song) =>
+            song.genre.key === selectedGenre
+        );
 
-        <button
-          className="toggleBtn"
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Collapse" : "Show All"}
-        </button>
+  return (
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <h2>{title}</h2>
       </div>
 
-      {showAll ? (
-        <div className="cardGrid">
-          {albums.map((album) => (
-            <AlbumCard
-              key={album.id}
-              image={album.image}
-              follows={album.follows}
-              title={album.title}
+      <div className={styles.tabs}>
+        <Tabs
+          value={selectedGenre}
+          onChange={(e, value) =>
+            setSelectedGenre(value)
+          }
+        >
+          {genres.map((genre) => (
+            <Tab
+              key={genre.key}
+              value={genre.key}
+              label={genre.label}
             />
           ))}
-        </div>
-      ) : (
-        <Carousel
-          data={albums}
-          renderComponent={(album) => (
-            <AlbumCard
-              image={album.image}
-              follows={album.follows}
-              title={album.title}
-            />
-          )}
-        />
-      )}
+        </Tabs>
+      </div>
+
+      <Carousel
+        data={filteredSongs}
+        renderComponent={(song) => (
+          <Card
+            image={song.image}
+            title={song.title}
+            follows={song.likes}
+            isSongsSection
+          />
+        )}
+      />
     </section>
   );
 };
