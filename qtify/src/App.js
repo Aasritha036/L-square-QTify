@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-import Section from "./Section/Section";
+import Section from "./components/Section/Section";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./App.css";
@@ -26,7 +26,15 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Hero />
-        <Section />
+        <Section
+          title="Top Albums"
+          endpoint="/albums/top"
+        />
+
+        <Section
+          title="New Albums"
+          endpoint="/albums/new"
+        />
       </BrowserRouter>
     </ThemeProvider>
   );

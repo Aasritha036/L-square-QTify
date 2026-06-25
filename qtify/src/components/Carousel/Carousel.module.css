@@ -1,0 +1,23 @@
+.swiper{
+
+    width:100%;
+
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+
+    background:#34C94B;
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}

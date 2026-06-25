@@ -1,0 +1,40 @@
+.cardWrapper {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.albumCard {
+  width: 160px;
+  border-radius: 10px !important;
+  overflow: hidden;
+  background: var(--color-white) !important;
+  box-shadow: none !important;
+}
+
+.albumImage {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+}
+
+.albumContent {
+  padding: 8px 12px !important;
+}
+
+.chip {
+  background: var(--color-black) !important;
+  color: var(--color-white) !important;
+  font-size: 12px !important;
+  height: 24px !important;
+  border-radius: 12px !important;
+}
+
+.albumTitle {
+  color: var(--color-white);
+  margin-top: 8px;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
